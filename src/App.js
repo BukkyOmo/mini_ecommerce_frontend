@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import SignUpForm from './components/forms/Signup.jsx';
+// import LoginForm from './components/forms/Login.jsx';
+// import ProductList from './components/products/product-list';
+import Routes from './routes/index';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+	<Routes />
+	// state = {
+	//   data: []
+	// }
+
+	// handleSubmit = datum => {
+	//   this.setState({ data: [...this.state.data, datum] })
+	// }
+
+	// render() {
+	//   return (
+	//     <div className='container'>
+	//       <SignUpForm handleSubmit={this.handleSubmit} />
+	//       <LoginForm handleSubmit={this.handleSubmit} />
+	//       <ProductList />
+	//     </div>
+	//   );
+	// }
+);
 
 export default App;

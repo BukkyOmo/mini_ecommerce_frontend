@@ -1,0 +1,40 @@
+.header {
+    display: flex;
+    flex-flow: row wrap;
+    background-color: #000;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 70px;;
+    color: #fff;
+    position: sticky;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    margin-left: 800px;
+    align-items: center;
+    list-style-type: none;
+}
+
+.nav-home
+{
+    margin-right: auto;
+    font-size: 25px;
+    font-weight: 400;
+    margin: 12px 0px 12px 50px;
+} 
+
+.nav-links > li {
+    color: white;
+    text-decoration: none;
+    margin-right: 30px;
+}
+
+.footer{
+    background-color: #000;
+    color: #fff;
+    width: 100%;
+}

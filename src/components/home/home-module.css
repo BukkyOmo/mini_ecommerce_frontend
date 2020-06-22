@@ -1,0 +1,44 @@
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    background-color: #f2f2f2;
+    line-height: 2em;
+    font-family: 'Lato', sans-serif;
+}
+
+.banner {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('/store-commerce.jpg');
+    background-size: cover;
+    background-position: right 25px top;
+    opacity: 1;
+    height: 100vh;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-item {
+    font-size: 50px;
+    text-align: center;
+    line-height: 0.7em;
+}
+
+.btn {
+    height: 50px;
+    background-color: #000;
+    margin-bottom: 5px;
+    width: 170px;
+    margin-left: 47px;
+    border: 1px solid #1a1716;
+    font-size: 17px;
+    font-weight: 800;
+    border-radius: 8px;
+}
+
+.btn > a {
+    text-decoration: none;
+    color: #fff;
+}
