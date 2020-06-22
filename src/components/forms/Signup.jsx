@@ -24,7 +24,6 @@ class SignUpForm extends Component {
     }
 
     render() {
-        // console.log(this.props, 'props')
         const { firstname, lastname, email, password } = this.state;
 
         return (
