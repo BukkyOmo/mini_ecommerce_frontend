@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as SignUpActions from '../../redux/actions/signUpActions';
 import './form-module.css';
 
 class SignUpForm extends Component {
@@ -18,8 +20,7 @@ class SignUpForm extends Component {
     };
 
     submitForm = () => {
-        this.props.handleSubmit(this.state);
-        this.setState(this.initialState);
+        this.props.signUp(this.state);
     }
 
     render() {
@@ -75,4 +76,12 @@ class SignUpForm extends Component {
     }
 }
 
-export default SignUpForm;
+const mapStateToProps = state => ({
+    users: state.signUp
+})
+
+const mapDispatchToProps = {
+    signUp: SignUpActions.signUp
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm);
