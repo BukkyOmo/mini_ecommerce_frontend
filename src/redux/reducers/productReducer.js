@@ -1,6 +1,8 @@
+import * as types from '../actionTypes/createProduct';
+
 const productReducer = (state = [], action) => {
 	switch (action.type) {
-		case 'CREATE_PRODUCT':
+		case types.CREATE_PRODUCT:
 			return [...state, { ...action.product }];
 		default:
 			return state;

@@ -18,8 +18,9 @@ class CreateProduct extends Component{
             [name]: value
         });
     }
+
     submitForm = () => {
-        this.props.dispatch(productActions.createProduct(this.state));
+        this.props.createProduct(this.state);
     }
 
 
@@ -81,8 +82,12 @@ class CreateProduct extends Component{
     }
 }
 
-const mapStateToProps = (state) => ({
+const mapDispatchToProps = {
+    createProduct: productActions.createProduct
+}
+
+const mapStateToProps = state => ({
     products: state.products
 });
 
-export default connect(mapStateToProps)(CreateProduct);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateProduct);

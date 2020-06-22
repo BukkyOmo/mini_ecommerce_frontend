@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as loginActions from '../../redux/actions/logInAction';
 import { Link } from 'react-router-dom';
 
 class LoginForm extends Component {
@@ -16,8 +18,7 @@ class LoginForm extends Component {
     }
 
     submitForm = () => {
-        this.props.handleSubmit(this.state);
-        this.setState(this.initialState);
+        this.props.loginUser(this.state);
     }
 
     render() {
@@ -26,7 +27,6 @@ class LoginForm extends Component {
         return (
             <form className='form'>
                 <div className='form-item'>
-                    {/* <label htmlFor='email'>Email</label> */}
                     <input
                         type='text'
                         name='email'
@@ -37,7 +37,6 @@ class LoginForm extends Component {
                     />
                 </div>
                 <div className='form-item'>
-                    {/* <label htmlFor='password'>Password</label> */}
                     <input
                         type='text'
                         name='password'
@@ -48,9 +47,7 @@ class LoginForm extends Component {
                     />
                 </div>
                 <div className='form-item'>
-                    <button id='login' className='btn form-btn' type='submit'>
-                        Sign In
-                    </button>
+                        <input type='button' className ='btn form-btn' value='Sign In' onClick={this.submitForm} />
                 </div>
                 <div className='form-item'>
                     <p>
@@ -62,4 +59,12 @@ class LoginForm extends Component {
     }
 }
 
-export default LoginForm;
+const mapStateToProps = state => ({
+    login: state.logIn
+});
+
+const mapDispatchToProps = {
+    loginUser: loginActions.logInUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
