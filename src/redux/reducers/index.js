@@ -1,14 +1,16 @@
 import { combineReducers } from 'redux';
-import productReducer from './productReducer';
+import createProductReducer from './createProductReducer';
 import signUpReducer from './signUpReducer';
 import loginReducer from './loginReducer';
 import getProductsReducer from './getProductsReducer';
+import getOwnProductsReducer from './getOwnProductsReducer';
 
 const rootReducer = combineReducers({
-	products: productReducer,
+	createProduct: createProductReducer,
 	signUp: signUpReducer,
-    logIn: loginReducer,
-    getProducts: getProductsReducer
+	logIn: loginReducer,
+	getProducts: getProductsReducer,
+	getOwnProducts: getOwnProductsReducer
 });
 
 export default rootReducer;

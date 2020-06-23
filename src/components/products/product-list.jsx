@@ -32,11 +32,11 @@ class ProductList extends Component {
 }
 
 const mapStateToProps = state => ({
-    Products: state.getProducts
+    Products: state.getProducts.products
 });
 
 const mapDispatchToProps = {
-    getProducts: getProductsActions.getAllProducts
+    getProducts: getProductsActions.handleGetAllProducts
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductList);

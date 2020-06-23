@@ -25,6 +25,7 @@
         "prettier/prettier": "warn",
         "require-jsdoc": 0,
         "react/display-name": 0,
-        "guard-for-in": "off"
+        "guard-for-in": "off",
+        "react/prop-types": "off"
     }
 }

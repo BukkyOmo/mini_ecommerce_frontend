@@ -24,6 +24,7 @@ body {
     font-size: 50px;
     text-align: center;
     line-height: 0.7em;
+    margin-bottom: 20px;
 }
 
 .btn {
@@ -31,7 +32,7 @@ body {
     background-color: #000;
     margin-bottom: 5px;
     width: 170px;
-    margin-left: 47px;
+    margin-left: 22px;
     border: 1px solid #1a1716;
     font-size: 17px;
     font-weight: 800;

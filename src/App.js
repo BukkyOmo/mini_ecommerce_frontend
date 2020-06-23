@@ -4,21 +4,19 @@ import { connect } from 'react-redux';
 import { logInUserSuccess } from './redux/actions/logInAction';
 
 class App extends Component {
-	componentDidMount(){
+	componentDidMount() {
 		const token = localStorage.getItem('token');
-		if(token){
+		if (token) {
 			this.props.logInUserSuccess(token);
 		}
 	}
 	render() {
-	return (
-		<Routes />
-		)
+		return <Routes />;
 	}
-};
+}
 
 const mapDispatcheToProps = {
 	logInUserSuccess
-}
+};
 
 export default connect(null, mapDispatcheToProps)(App);
