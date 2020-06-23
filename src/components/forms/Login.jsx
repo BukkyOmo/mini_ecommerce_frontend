@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as loginActions from '../../redux/actions/logInAction';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 class LoginForm extends Component {
     initialState = {
@@ -23,9 +23,11 @@ class LoginForm extends Component {
 
     render() {
         const { email, password } = this.state;
+        const { pending, error, loggedIn } = this.props;
 
-        return (
+        return loggedIn ? <Redirect to={'/products'} />  : (
             <form className='form'>
+                {error ? <span>{error.message}</span> : null}
                 <div className='form-item'>
                     <input
                         type='text'
@@ -47,7 +49,7 @@ class LoginForm extends Component {
                     />
                 </div>
                 <div className='form-item'>
-                        <input type='button' className ='btn form-btn' value='Sign In' onClick={this.submitForm} />
+                        <input type='button' className ='btn form-btn' value={pending ? 'Submiting...' : 'Sign In'} onClick={this.submitForm} />
                 </div>
                 <div className='form-item'>
                     <p>
@@ -60,11 +62,13 @@ class LoginForm extends Component {
 }
 
 const mapStateToProps = state => ({
-    login: state.logIn
+    loggedIn: state.logIn.loggedIn,
+    pending: state.logIn.pending,
+    error: state.logIn.error
 });
 
 const mapDispatchToProps = {
-    loginUser: loginActions.logInUser
+    loginUser: loginActions.HandlelogInUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
