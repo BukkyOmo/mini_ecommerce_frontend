@@ -1,28 +1,24 @@
-import React from 'react';
-// import SignUpForm from './components/forms/Signup.jsx';
-// import LoginForm from './components/forms/Login.jsx';
-// import ProductList from './components/products/product-list';
+import React, { Component } from 'react';
 import Routes from './routes/index';
+import { connect } from 'react-redux';
+import { logInUserSuccess } from './redux/actions/logInAction';
 
-const App = () => (
-	<Routes />
-	// state = {
-	//   data: []
-	// }
+class App extends Component {
+	componentDidMount(){
+		const token = localStorage.getItem('token');
+		if(token){
+			this.props.logInUserSuccess(token);
+		}
+	}
+	render() {
+	return (
+		<Routes />
+		)
+	}
+};
 
-	// handleSubmit = datum => {
-	//   this.setState({ data: [...this.state.data, datum] })
-	// }
+const mapDispatcheToProps = {
+	logInUserSuccess
+}
 
-	// render() {
-	//   return (
-	//     <div className='container'>
-	//       <SignUpForm handleSubmit={this.handleSubmit} />
-	//       <LoginForm handleSubmit={this.handleSubmit} />
-	//       <ProductList />
-	//     </div>
-	//   );
-	// }
-);
-
-export default App;
+export default connect(null, mapDispatcheToProps)(App);

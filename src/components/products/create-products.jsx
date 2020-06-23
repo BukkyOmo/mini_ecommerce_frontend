@@ -74,9 +74,6 @@ class CreateProduct extends Component{
                 <div className='form-item'>
                     <input type='button' className='btn form-btn' value='Save' onClick={this.submitForm} />
                 </div>
-                {this.props.products.map(product => (
-                    <div key={product.name}>{product.name}</div>
-                ))}
             </form>
         )
     }

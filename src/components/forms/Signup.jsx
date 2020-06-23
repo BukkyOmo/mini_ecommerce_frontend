@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as SignUpActions from '../../redux/actions/signUpActions';
+import { Redirect } from 'react-router-dom';
 import './form-module.css';
 
 class SignUpForm extends Component {
@@ -20,14 +21,16 @@ class SignUpForm extends Component {
     };
 
     submitForm = () => {
-        this.props.signUp(this.state);
+        this.props.signUpUser(this.state);
     }
 
     render() {
         const { firstname, lastname, email, password } = this.state;
+        const { loggedIn, pending, error } = this.props;
 
-        return (
+        return loggedIn ? <Redirect to={'/products'} /> : (
             <form className='form'>
+                {error ? <span>{error.message}</span> : null}
                 <div className='form-item'>
                     <input
                         type='text'
@@ -69,7 +72,7 @@ class SignUpForm extends Component {
                     />
                 </div>
                 <div className='form-item'>
-                    <input type='button' className ='btn form-btn' value='Submit' onClick={this.submitForm} />
+                    <input type='button' className ='btn form-btn' value={ pending ? 'Submitting...' : 'Sign Up' } onClick={this.submitForm} />
                 </div>
             </form>
         )
@@ -77,11 +80,13 @@ class SignUpForm extends Component {
 }
 
 const mapStateToProps = state => ({
-    users: state.signUp
-})
+    pending: state.signUp.pending,
+    error: state.signUp.error,
+    loggedIn: state.signUp.loggedIn
+});
 
 const mapDispatchToProps = {
-    signUp: SignUpActions.signUp
+    signUpUser: SignUpActions.handleSignUp
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm);
