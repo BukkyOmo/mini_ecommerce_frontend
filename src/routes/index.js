@@ -8,6 +8,7 @@ import PageNotFound from '../components/pagenotfound/PageNotFound.jsx';
 import Header from '../components/common/Header';
 import CreateProduct from '../components/products/create-products';
 import UserProductList from '../components/products/user-product-list';
+import ProductComponent from '../components/products/product';
 
 const Routes = () => (
 	<BrowserRouter>
@@ -15,11 +16,12 @@ const Routes = () => (
 			<Header />
 			<Switch>
 				<Route exact path='/' component={Homepage} />
-				<Route path='/products' component={ProductList} />
 				<Route path='/signup' component={SignUpForm} />
 				<Route path='/signin' component={LoginForm} />
 				<Route path='/create' component={CreateProduct} />
 				<Route path='/products-user' component={UserProductList} />
+				<Route path='/products/:id' component={ProductComponent} />
+				<Route path='/products' component={ProductList} />
 				<Route component={PageNotFound} />
 			</Switch>
 		</div>

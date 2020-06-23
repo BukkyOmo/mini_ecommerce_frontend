@@ -4,6 +4,7 @@ import * as getProductsActions from '../../redux/actions/getProductsActions';
 import './product-list-module.css';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
 class ProductList extends Component {
     componentDidMount(){
@@ -22,7 +23,7 @@ class ProductList extends Component {
                         <Card.Text>
                             Price: #{product.price}
                             </Card.Text>
-                        <Button variant="primary">Buy</Button>
+                        <Button variant="primary"><Link to='/products/:id'>Buy</Link></Button>
                     </Card.Body>
                 </Card>
                 ))}

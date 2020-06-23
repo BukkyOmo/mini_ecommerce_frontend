@@ -17,3 +17,36 @@
     justify-content: space-around;
     align-items: center;
 }
+
+.product-container {
+    display: flex;
+    border: 1px solid black;
+    width: 900px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 80vh;
+    box-shadow: 2px 3px #cfcfcc;
+}
+
+.product-image{
+    border: 1px solid black;
+    width: 500px;
+    height: 500px;
+    /* justify-content: ; */
+}
+
+.product-details-container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    width: 400px;
+    height: 400px;
+    /* flex-wrap: wrap; */
+}
+
+.product-details-item {
+    height: 200px;
+    align-self: flex-start;
+    border: 1px solid gray;
+    /* justify-self: stretch; */
+}

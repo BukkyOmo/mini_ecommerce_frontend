@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as productActions from '../../redux/actions/productActions';
+import uploadImage from '../../helpers/cloudinary';
 
 class CreateProduct extends Component{
     initialState = {
@@ -22,6 +23,15 @@ class CreateProduct extends Component{
     submitForm = () => {
         this.props.createProduct(this.state);
     };
+
+    handleUploadClick = async () => {
+        try {
+            const image = await uploadImage();
+            console.log(image); 
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     render() {
         const { name, description, price, image_url } = this.state;
@@ -63,14 +73,15 @@ class CreateProduct extends Component{
                     />
                 </div>
                 <div className='form-item'>
-                    <input
+                    {/* <input
                         type='file'
                         name='image_url'
                         id='image_url'
                         value={image_url}
                         onChange={this.handleChange}
                         placeholder='image'
-                    />
+                    /> */}
+                    <div onClick={this.handleUploadClick}>Upload Image</div>
                 </div>
                 <div className='form-item'>
                     <input type='button' className='btn form-btn' value={pending ? 'Submitting...' : 'Save Product'} onClick={this.submitForm} />
