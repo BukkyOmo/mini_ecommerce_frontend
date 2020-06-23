@@ -6,23 +6,22 @@ export const signUpUser = () => {
 };
 
 export const signUpSuccess = (payload) => {
-    return { type: types.SIGNUP_USER_SUCCESS, payload }
+	return { type: types.SIGNUP_USER_SUCCESS, payload };
 };
 
 export const signUpFailure = (payload) => {
-    return { type: types.SIGNUP_USER_FAILURE, payload }
+	return { type: types.SIGNUP_USER_FAILURE, payload };
 };
 
 // action creators
 export const handleSignUp = (user) => async (dispatch) => {
-    try {
-        dispatch(signUpUser());
-        const response = await axios.post('/auth/signup', user)
-        console.log(response);
-        const data = response.data.token;
-        localStorage.setItem('token', data);
-        dispatch(signUpSuccess(data));
-    } catch (error) {
-        dispatch(signUpFailure(error));
-    }
-}
+	try {
+		dispatch(signUpUser());
+		const response = await axios.post('/auth/signup', user);
+		const data = response.data.token;
+		localStorage.setItem('token', data);
+		dispatch(signUpSuccess(data));
+	} catch (error) {
+		dispatch(signUpFailure(error));
+	}
+};

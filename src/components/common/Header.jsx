@@ -12,7 +12,7 @@ const Header = (props) => {
             <ul className='nav-links'>
                 <li className='nav-links-item'><NavLink to='/products' activeStyle={activeStyle}>Buy Products</NavLink></li>
                 <li className='nav-links-item'><NavLink to='/create' activeStyle={activeStyle}>Create Products</NavLink></li>
-                <li className='nav-links-item'><NavLink to='/products/mine' activeStyle={activeStyle}>View my Products</NavLink></li>
+                <li className='nav-links-item'><NavLink to='/products-user' activeStyle={activeStyle}>View my Products</NavLink></li>
             </ul>
         </nav>
     ) : null;

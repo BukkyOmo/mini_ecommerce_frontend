@@ -7,7 +7,7 @@ class CreateProduct extends Component{
         name: '',
         description: '',
         price: '',
-        image: ''
+        image_url: ''
     }
     state = this.initialState;
 
@@ -17,18 +17,19 @@ class CreateProduct extends Component{
         this.setState({
             [name]: value
         });
-    }
+    };
 
     submitForm = () => {
         this.props.createProduct(this.state);
-    }
-
+    };
 
     render() {
-        const { name, description, price, image } = this.state;
+        const { name, description, price, image_url } = this.state;
+        const { pending, error } = this.props;
 
         return (
             <form className='form create-product'>
+                {error ? <span>{error.message}</span> : null}
                 <div className='form-item'>
                     <input
                         type='text'
@@ -64,15 +65,15 @@ class CreateProduct extends Component{
                 <div className='form-item'>
                     <input
                         type='file'
-                        name='image'
-                        id='image'
-                        value={image}
+                        name='image_url'
+                        id='image_url'
+                        value={image_url}
                         onChange={this.handleChange}
                         placeholder='image'
                     />
                 </div>
                 <div className='form-item'>
-                    <input type='button' className='btn form-btn' value='Save' onClick={this.submitForm} />
+                    <input type='button' className='btn form-btn' value={pending ? 'Submitting...' : 'Save Product'} onClick={this.submitForm} />
                 </div>
             </form>
         )
@@ -80,11 +81,12 @@ class CreateProduct extends Component{
 }
 
 const mapDispatchToProps = {
-    createProduct: productActions.createProduct
+    createProduct: productActions.handleCreateProduct
 }
 
 const mapStateToProps = state => ({
-    products: state.products
+    pending: state.createProduct.pending,
+    error: state.createProduct.error
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateProduct);
