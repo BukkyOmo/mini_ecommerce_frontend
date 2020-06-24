@@ -16,7 +16,7 @@ class ProductList extends Component {
             <div className='products'>
                 {Products.map(product => (
                     <Card style={{ width: '18rem', marginTop: '50px' }} key={product._id}>
-                    <Card.Img variant="top" src={product.image_url} />
+                    <Card.Img variant="top" src={product.image_url} style={{height: '280px', width: '100%'}} />
                     <hr/>
                     <Card.Body>
                         <Card.Title>{product.name}</Card.Title>

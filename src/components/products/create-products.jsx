@@ -20,18 +20,17 @@ class CreateProduct extends Component{
         });
     };
 
+    handleUploadClick = async () => {
+            const result = await uploadImage();
+            let image_url = result.url;
+            this.setState({
+                image_url
+            });
+    };
+
     submitForm = () => {
         this.props.createProduct(this.state);
     };
-
-    handleUploadClick = async () => {
-        try {
-            const image = await uploadImage();
-            console.log(image); 
-        } catch (error) {
-            console.log(error);
-        }
-    }
 
     render() {
         const { name, description, price, image_url } = this.state;
@@ -72,17 +71,10 @@ class CreateProduct extends Component{
                         placeholder='price'
                     />
                 </div>
+                {image_url === '' ?  
                 <div className='form-item'>
-                    {/* <input
-                        type='file'
-                        name='image_url'
-                        id='image_url'
-                        value={image_url}
-                        onChange={this.handleChange}
-                        placeholder='image'
-                    /> */}
-                    <div onClick={this.handleUploadClick}>Upload Image</div>
-                </div>
+                    <div onClick={this.handleUploadClick} value={image_url} style={{width:'150px', textAlign: 'center', marginLeft: '20px', border: '1px solid grey', borderRadius:'10px'}}>Upload Image</div>
+                </div> : <div className='form-item' style={{color:'#000', width: '180px', margin: '0 auto 20px', textAlign: 'center'}}>Upload successful</div>}
                 <div className='form-item'>
                     <input type='button' className='btn form-btn' value={pending ? 'Submitting...' : 'Save Product'} onClick={this.submitForm} />
                 </div>

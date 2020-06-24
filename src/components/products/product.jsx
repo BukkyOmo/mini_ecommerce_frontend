@@ -9,7 +9,7 @@ const ProductComponent = () => {
         <div className='products'>
             <Container style={{width:'50%', backgroundColor: 'white', minHeight:'50vh', padding: '20px'}}>
                 <Row>
-                    <Col ><img src="/logo192.png" alt="" srcset="" style={{width: '100%'}}/></Col>
+                    <Col ><img src="/logo192.png" alt="" style={{width: '100%'}}/></Col>
                     <Col lg={7}>
                     <h3>Ginonee Phone</h3>
                     <div>jkhjdsfjkdjkdfjjjsdfkkdsakjd kjfkdjalkjdjksjhfgdfn ghgeuygjhdgdsgvdsh kjfkdjalkjdjksjhfgdfn ghgeuygjhdgdsgvdsh</div>
