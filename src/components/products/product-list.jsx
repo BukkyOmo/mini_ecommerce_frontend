@@ -4,6 +4,7 @@ import * as getProductsActions from '../../redux/actions/getProductsActions';
 import './product-list-module.css';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
 class ProductList extends Component {
     componentDidMount(){
@@ -15,14 +16,14 @@ class ProductList extends Component {
             <div className='products'>
                 {Products.map(product => (
                     <Card style={{ width: '18rem', marginTop: '50px' }} key={product._id}>
-                    <Card.Img variant="top" src={product.image_url} />
+                    <Card.Img variant="top" src={product.image_url} style={{height: '280px', width: '100%'}} />
                     <hr/>
                     <Card.Body>
                         <Card.Title>{product.name}</Card.Title>
                         <Card.Text>
                             Price: #{product.price}
                             </Card.Text>
-                        <Button variant="primary">Buy</Button>
+                        <Button variant="primary"><Link to='/products/:id'>Buy</Link></Button>
                     </Card.Body>
                 </Card>
                 ))}
