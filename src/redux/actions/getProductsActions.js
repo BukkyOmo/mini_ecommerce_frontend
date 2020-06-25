@@ -22,6 +22,6 @@ export const handleGetAllProducts = (products) => async (dispatch) => {
 		const data = response.data.product;
 		dispatch(getProductSuccess(data));
 	} catch (error) {
-		dispatch(getProductFailure(error));
+		dispatch(getProductFailure(error.response.data));
 	}
 };

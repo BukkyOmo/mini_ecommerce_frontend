@@ -31,6 +31,6 @@ export const HandlelogInUser = (user) => async (dispatch) => {
 		localStorage.setItem('token', data);
 		dispatch(logInUserSuccess(data));
 	} catch (error) {
-		dispatch(logInUserFailure(error));
+		dispatch(logInUserFailure(error.response.data));
 	}
 };

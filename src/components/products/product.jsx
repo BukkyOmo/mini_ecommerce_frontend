@@ -1,25 +1,50 @@
-import React from 'react';
+import React, { Component } from 'react';
 // import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import * as ProductActions from '../../redux/actions/getOneProductActions';
 
-const ProductComponent = () => {
-    return (
-        <div className='products'>
-            <Container style={{width:'50%', backgroundColor: 'white', minHeight:'50vh', padding: '20px'}}>
-                <Row>
-                    <Col ><img src="/logo192.png" alt="" style={{width: '100%'}}/></Col>
-                    <Col lg={7}>
-                    <h3>Ginonee Phone</h3>
-                    <div>jkhjdsfjkdjkdfjjjsdfkkdsakjd kjfkdjalkjdjksjhfgdfn ghgeuygjhdgdsgvdsh kjfkdjalkjdjksjhfgdfn ghgeuygjhdgdsgvdsh</div>
-                    <p>price: #5000</p>
-                    <button>Add to cart</button>
-                    </Col>
-                </Row>
-            </Container>
-        </div>
-    )
+class ProductComponent extends Component {
+    componentDidMount(){
+        const {
+            match: {
+                params: { id }
+            }
+        } = this.props
+        this.props.getOneProduct(id)
+        console.log(this.state, 'props');
+    }
+    render(){
+        const { Product, error } = this.props;
+        
+        return error ? <Redirect to={'/'} /> : (
+            <div className='products'>
+                <Container style={{width:'50%', backgroundColor: 'white', minHeight:'50vh', padding: '20px'}}>
+                    <Row>
+                        <Col ><img src={Product.image_url} alt="product" style={{width: '100%', height: '330px'}}/></Col>
+                        <Col lg={6}>
+                        <h3>{Product.name}</h3>
+                        <div>{Product.description}</div>
+                        <p>price: #{Product.price}</p>
+                        <button className='btn btn-no-margin-left'>Add to cart</button>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
+        )
+    }
 }
 
-export default ProductComponent;
+const mapStateToProps = state => ({
+    Product: state.getOneProduct.product,
+    error: state.getOneProduct.error
+});
+
+const mapDispatchToProps = {
+    getOneProduct: ProductActions.handleGetProduct
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductComponent);
