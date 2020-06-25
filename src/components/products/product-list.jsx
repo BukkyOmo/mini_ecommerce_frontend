@@ -12,6 +12,7 @@ class ProductList extends Component {
     }
     render() {
         const { Products } = this.props;
+
         return (
             <div className='products'>
                 {Products.map(product => (
@@ -23,7 +24,7 @@ class ProductList extends Component {
                         <Card.Text>
                             Price: #{product.price}
                             </Card.Text>
-                        <Button variant="primary"><Link to='/products/:id'>Buy</Link></Button>
+                        <Button variant="primary"><Link to={`/products/${product._id}`}>Buy</Link></Button>
                     </Card.Body>
                 </Card>
                 ))}

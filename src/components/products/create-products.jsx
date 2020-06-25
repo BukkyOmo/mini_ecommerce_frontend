@@ -73,7 +73,7 @@ class CreateProduct extends Component{
                 </div>
                 {image_url === '' ?  
                 <div className='form-item'>
-                    <div onClick={this.handleUploadClick} value={image_url} style={{width:'150px', textAlign: 'center', marginLeft: '20px', border: '1px solid grey', borderRadius:'10px'}}>Upload Image</div>
+                    <div onClick={this.handleUploadClick} value={image_url} style={{width:'150px', textAlign: 'center', marginLeft: '20px', border: '1px solid grey', borderRadius:'10px', cursor: 'pointer'}}>Upload Image</div>
                 </div> : <div className='form-item' style={{color:'#000', width: '180px', margin: '0 auto 20px', textAlign: 'center'}}>Upload successful</div>}
                 <div className='form-item'>
                     <input type='button' className='btn form-btn' value={pending ? 'Submitting...' : 'Save Product'} onClick={this.submitForm} />

@@ -22,6 +22,6 @@ export const handleSignUp = (user) => async (dispatch) => {
 		localStorage.setItem('token', data);
 		dispatch(signUpSuccess(data));
 	} catch (error) {
-		dispatch(signUpFailure(error));
+		dispatch(signUpFailure(error.response.data));
 	}
 };

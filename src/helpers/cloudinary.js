@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
 dotenv.config();
-console.log(process.env)
 
 function uploadImage() {
 	return new Promise((resolve, reject) => {
