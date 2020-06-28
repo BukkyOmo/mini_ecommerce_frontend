@@ -4,8 +4,9 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import * as ProductActions from '../../redux/actions/getOneProductActions';
+import * as CartActions from '../../redux/actions/cartActions';
 
 class ProductComponent extends Component {
     componentDidMount(){
@@ -15,8 +16,17 @@ class ProductComponent extends Component {
             }
         } = this.props
         this.props.getOneProduct(id)
-        console.log(this.state, 'props');
-    }
+    };
+
+    submitCartItem = () => {
+        const {
+            match: {
+                params: { id }
+            }
+        } = this.props
+        this.props.addItemToCart(id);
+    };
+
     render(){
         const { Product, error } = this.props;
         
@@ -29,7 +39,7 @@ class ProductComponent extends Component {
                         <h3>{Product.name}</h3>
                         <div>{Product.description}</div>
                         <p>price: #{Product.price}</p>
-                        <button className='btn btn-no-margin-left'>Add to cart</button>
+                        <button className='btn btn-no-margin-left' onClick={this.submitCartItem}><Link to={'/carts'}>Add to cart</Link></button>
                         </Col>
                     </Row>
                 </Container>
@@ -44,7 +54,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-    getOneProduct: ProductActions.handleGetProduct
+    getOneProduct: ProductActions.handleGetProduct,
+    addItemToCart: CartActions.handleAddToCart
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductComponent);

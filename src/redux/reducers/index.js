@@ -5,6 +5,8 @@ import loginReducer from './loginReducer';
 import getProductsReducer from './getProductsReducer';
 import getOwnProductsReducer from './getOwnProductsReducer';
 import getOneProductReducer from './getOneProductReducer';
+import { getCartReducer } from './cartReducer';
+import { addItemToCartReducer } from './cartReducer';
 
 const rootReducer = combineReducers({
 	createProduct: createProductReducer,
@@ -12,7 +14,9 @@ const rootReducer = combineReducers({
 	logIn: loginReducer,
 	getProducts: getProductsReducer,
 	getOwnProducts: getOwnProductsReducer,
-	getOneProduct: getOneProductReducer
+	getOneProduct: getOneProductReducer,
+	getCart: getCartReducer,
+	addItemToCart: addItemToCartReducer
 });
 
 export default rootReducer;
