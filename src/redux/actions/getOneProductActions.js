@@ -1,6 +1,5 @@
 import * as types from '../actionTypes/getOneProduct';
 import axios from '../../config/axiosConfig';
-import { getProductFailure } from './getProductsActions';
 
 export const getOneProductPending = () => {
     return { type: types.GET_PRODUCT_PENDING }

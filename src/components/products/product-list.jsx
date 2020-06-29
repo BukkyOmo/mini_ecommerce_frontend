@@ -14,18 +14,17 @@ class ProductList extends Component {
         const { Products } = this.props;
 
         return (
-            <div className='products'>
+            <div className='products' style={{margin: '20px 200px'}}>
                 {Products.map(product => (
                     <Card style={{ width: '18rem', marginTop: '50px' }} key={product._id}>
-                    <Card.Img variant="top" src={product.image_url} style={{height: '280px', width: '100%'}} />
-                    <hr/>
-                    <Card.Body>
-                        <Card.Title>{product.name}</Card.Title>
-                        <Card.Text>
-                            Price: #{product.price}
-                            </Card.Text>
-                        <Button variant="primary"><Link to={`/products/${product._id}`}>Buy</Link></Button>
-                    </Card.Body>
+                        <Card.Img variant="top" src={product.image_url} style={{height: '220px', width: '100%'}} />
+                        <Card.Body>
+                            <Card.Title>{product.name}</Card.Title>
+                            <Card.Text>
+                                Price: #{product.price}
+                                </Card.Text>
+                            <Button variant="primary"><Link to={`/products/${product._id}`}>Buy</Link></Button>
+                        </Card.Body>
                 </Card>
                 ))}
             </div>

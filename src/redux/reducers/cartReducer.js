@@ -12,10 +12,19 @@ const addItemToCartReducer = (state = {}, action) => {
 const getCartReducer = (state = [], action) => {
     switch(action.type) {
         case types.GET_CART_ITEMS:
-            return [...state, ...action.payload]
+            return action.payload 
         default:
             return state
     }
 };
 
-export { getCartReducer, addItemToCartReducer };
+const removeCartItemReducer = (state = {}, action) => {
+    switch(action.type){
+        case types.REMOVE_CART_ITEM:
+            return { ...state, ...action.payload }
+        default:
+            return state;
+    }
+}
+
+export { getCartReducer, addItemToCartReducer, removeCartItemReducer };

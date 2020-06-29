@@ -13,11 +13,10 @@ class UserProductList extends Component {
         const { Products } = this.props;
 
         return (
-            <div className='products'>
+            <div className='products' style={{margin: '20px 200px'}}>
             {Products.map(product => (
             <Card style={{ width: '18rem', marginTop: '50px' }} key={product._id}>
-                <Card.Img variant="top" src={product.image_url} style={{height: '280px', width: '100%'}} />
-                <hr/>
+                <Card.Img variant="top" src={product.image_url} style={{height: '220px', width: '100%'}} />
                 <Card.Body>
                     <Card.Title>{product.name}</Card.Title>
                     <Card.Text>
@@ -25,8 +24,8 @@ class UserProductList extends Component {
                     </Card.Text>
                     <Button variant="dark" style={{width:'100px'}}>Edit</Button>
                     <Button variant="dark" style={{width:'100px'}}>Delete</Button>
-            </Card.Body>
-        </Card>
+                </Card.Body>
+            </Card>
             ))}
             </div>
         )

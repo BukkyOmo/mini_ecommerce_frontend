@@ -5,12 +5,16 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class GetCart extends Component {
     componentDidMount(){
         this.props.ProductsInCart();
-    }
+    };
+
+    handleRemoveCartItem = (id) => {
+        this.props.removeItemFromCart(id);
+    };
     
     render() {
         const { Products } = this.props;
@@ -25,7 +29,7 @@ class GetCart extends Component {
                                 <Col ><img src={product.product.image_url} alt="product" style={{width: '80px', height: '80px'}}/></Col>
                                 <Col lg={7}>
                                     <div>{product.product.name}</div>
-                                    <a href='#' style={{textDecoration: 'none'}}>Remove from cart</a>
+                                    <button onClick={() => this.handleRemoveCartItem(product.product._id)}>Remove from cart</button>
                                 </Col>
                                 <Col ><p>{product.quantity}</p></Col>
                                 <Col lg={2}>
@@ -42,11 +46,13 @@ class GetCart extends Component {
 }
 
 const mapStateToProps = state => ({
-    Products: state.getCart
+    Products: state.getCart,
+    RemoveFromCart: state.removeCartItem
 });
 
 const mapDispatchToProps = {
-    ProductsInCart: cartActions.handleGetCartItems
+    ProductsInCart: cartActions.handleGetCartItems,
+    removeItemFromCart: cartActions.handleRemoveItemFromCart
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(GetCart);
