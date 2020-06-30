@@ -9,4 +9,13 @@ const getOwnProductsReducer = (state = [], action) => {
 	}
 };
 
-export default getOwnProductsReducer;
+const deleteProductReducer = (state = {}, action) => {
+	switch(action.type){
+		case types.DELETE_PRODUCT:
+			return { ...state, ...action.payload }
+		default:
+			return state;
+	}
+}
+
+export { getOwnProductsReducer, deleteProductReducer };

@@ -34,11 +34,12 @@ class CreateProduct extends Component{
 
     render() {
         const { name, description, price, image_url } = this.state;
-        const { pending, error } = this.props;
+        const { pending, error, data } = this.props;
 
         return (
             <form className='form create-product'>
                 {error ? <span>{error.message}</span> : null}
+                {data ? <span>{data.message}</span> : null}
                 <div className='form-item'>
                     <input
                         type='text'
@@ -89,7 +90,8 @@ const mapDispatchToProps = {
 
 const mapStateToProps = state => ({
     pending: state.createProduct.pending,
-    error: state.createProduct.error
+    error: state.createProduct.error,
+    data: state.createProduct.data
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateProduct);
