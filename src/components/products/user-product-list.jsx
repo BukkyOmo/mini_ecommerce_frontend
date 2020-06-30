@@ -8,7 +8,12 @@ import './product-list-module.css';
 class UserProductList extends Component {
     componentDidMount(){
         this.props.getProducts();
-    }
+    };
+
+    handleDeleteProduct = (id) => {
+        this.props.deleteOwnProduct(id);
+    };
+
     render(){
         const { Products } = this.props;
 
@@ -23,7 +28,7 @@ class UserProductList extends Component {
                         Price: #{product.price}
                     </Card.Text>
                     <Button variant="dark" style={{width:'100px'}}>Edit</Button>
-                    <Button variant="dark" style={{width:'100px'}}>Delete</Button>
+                    <Button variant="dark" style={{width:'100px'}} onClick={() => this.handleDeleteProduct(product._id)}>Delete</Button>
                 </Card.Body>
             </Card>
             ))}
@@ -33,11 +38,13 @@ class UserProductList extends Component {
 };
 
 const mapStateToProps = state => ({
-    Products: state.getOwnProducts
+    Products: state.getOwnProducts,
+    deleteProduct: state.deleteProduct
 });
 
 const mapDispatchToProps = {
-    getProducts: getOwnProductsActions.handleGetOwnProducts
+    getProducts: getOwnProductsActions.handleGetOwnProducts,
+    deleteOwnProduct: getOwnProductsActions.handleDeleteProduct
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserProductList);

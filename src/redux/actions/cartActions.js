@@ -17,7 +17,8 @@ export const handleAddToCart = (id, product) => async (dispatch) => {
     try {
         const response = await axios.post(`/carts/${id}`, product);
         const data = response.data.product;
-        dispatch(addToCartAction(data));   
+        dispatch(addToCartAction(data)); 
+        dispatch(handleGetCartItems(data));  
     } catch (error) {
         console.log(error.response);
     }
@@ -36,7 +37,6 @@ export const handleGetCartItems = (products) => async (dispatch) => {
 export const handleRemoveItemFromCart = (id) => async (dispatch) => {
     try {
         const response = await axios.delete(`/carts/${id}`);
-        console.log(response, 'res from db')
         const data = response.data;
         dispatch(removeFromCart(data));
         dispatch(handleGetCartItems(data));

@@ -19,7 +19,7 @@ export const handleCreateProduct = (product) => async (dispatch) => {
 	try {
 		dispatch(createProduct());
 		const response = await axios.post('/products', product);
-		const { data } = response.data;
+		const { data } = response;
 		dispatch(createProductSuccess(data));
 	} catch (error) {
 		dispatch(createProductFailure(error.response.data));
